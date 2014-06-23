@@ -8,6 +8,59 @@ import Foundation
     return str
 }
 
+@infix func * (left :Character, right: Int) -> String {
+	var str = ""
+	for i in 0..right {
+		str += left
+	}
+	return str
+}
+
+extension String {
+	func join(a:AnyObject?...) -> String {
+		var strArray = a.map({"\($0)"})
+		return (strArray as NSArray).componentsJoinedByString(self)
+	}
+
+	func zfill(width :Int) -> String {
+		let currentLength = self.bridgeToObjectiveC().length
+		if currentLength >= width {
+			return self
+		}
+		var fill = "0"
+		return "\(fill * (width - currentLength))\(self)"
+	}
+
+	func zfill(fill :Character, width :Int) -> String {
+		let currentLength = self.bridgeToObjectiveC().length
+		if currentLength >= width {
+			return self
+		}
+		return "\(String(fill) * (width - currentLength))\(self)"
+	}
+}
+
+extension Int {
+	init(_ string :String) {
+		var d = (string as NSString).integerValue
+		self = d
+	}
+}
+
+extension Float {
+	init(_ string :String) {
+		var d = (string as NSString).floatValue
+		self = d
+	}
+}
+
+extension Double {
+	init(_ string :String) {
+		var d = (string as NSString).doubleValue
+		self = d
+	}
+}
+
 func all(list:Array<AnyObject?>) -> Bool {
     for i :AnyObject? in list {
         if bool(i) == false {
@@ -26,6 +79,10 @@ func any(list:Array<AnyObject?>) -> Bool {
     return false
 }
 
+func bool() -> Bool {
+	return false
+}
+
 func bool(input:AnyObject?) -> Bool {
     if let i:AnyObject! = input {
 		if i as NSObject == false {
@@ -41,6 +98,32 @@ func chr(int :Int) -> String {
     b.append(UInt8(int))
     var data = NSData(bytes: b, length: 1)
     return NSString(data: data, encoding: NSUTF8StringEncoding)
+}
+
+func cmp<T:Comparable>(x :T, y: T) -> Int {
+	if x < y {
+		return -1
+	}
+	if x > y {
+		return 1
+	}
+	return 0
+}
+
+func dir(object: AnyObject) -> Array<String> {
+	if let cls :AnyClass = object_getClass(object) {
+		var count :CUnsignedInt = 0
+		var methods = class_copyMethodList(cls, &count)
+		var methodNames = Array<String>()
+
+		for var i:CUnsignedInt = 0; i < count; i++ {
+			let methodName = "\(sel_getName(method_getName(methods.memory)))"
+			methodNames.append(methodName)
+			methods = methods.succ()
+		}
+		return methodNames
+	}
+	return []
 }
 
 func str<T>(input :T) -> String {

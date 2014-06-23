@@ -38,6 +38,21 @@ class SampleAppTests: XCTestCase {
 		XCTAssert(chr(99) == "c")
 	}
 
+	func testCmp() {
+		XCTAssert(cmp(1, 2) == -1)
+		XCTAssert(cmp(2, 1) == 1)
+		XCTAssert(cmp(2, 2) == 0)
+		XCTAssert(cmp("z", "b") == 1)
+		XCTAssert(cmp("b", "z") == -1)
+		XCTAssert(cmp("z", "z") == 0)
+	}
+
+	func testDir() {
+		println(dir("test" as NSString))
+		println(dir(123 as NSNumber))
+		println(dir([123, 456] as NSArray))
+	}
+
 	func testStr() {
 		XCTAssert(str(97) == "97")
 		XCTAssert(str(98) == "98")
