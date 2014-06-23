@@ -28,6 +28,9 @@ func any(t:Array<AnyObject?>) -> Bool {
 
 func bool(input:AnyObject?) -> Bool {
     if let i:AnyObject! = input {
+		if i as NSObject == false {
+			return false
+		}
         return Bool(input)
     }
     return false
@@ -35,10 +38,9 @@ func bool(input:AnyObject?) -> Bool {
 
 func chr(i :Int) -> String {
     var b = UInt8[]()
-    b.append(i)
+    b.append(UInt8(i))
     var data = NSData(bytes: b, length: 1)
-    var s = NSString(data: data, encoding: NSUTF8StringEncoding)
-    return s
+    return NSString(data: data, encoding: NSUTF8StringEncoding)
 }
 
 func str<T>(t:T) -> String {
