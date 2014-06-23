@@ -14,6 +14,8 @@
 		D471838B1958980200B6F360 /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D471838A1958980200B6F360 /* SampleAppTests.swift */; };
 		D47183961958985200B6F360 /* Pyish.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47183951958985200B6F360 /* Pyish.swift */; };
 		D47183971958985200B6F360 /* Pyish.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47183951958985200B6F360 /* Pyish.swift */; };
+		D4BC08C91958AC6800637A89 /* PyishString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08C81958AC6800637A89 /* PyishString.swift */; };
+		D4BC08CB1958ACBD00637A89 /* PyishNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08CA1958ACBD00637A89 /* PyishNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		D47183891958980200B6F360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D471838A1958980200B6F360 /* SampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppTests.swift; sourceTree = "<group>"; };
 		D47183951958985200B6F360 /* Pyish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pyish.swift; sourceTree = "<group>"; };
+		D4BC08C81958AC6800637A89 /* PyishString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyishString.swift; sourceTree = "<group>"; };
+		D4BC08CA1958ACBD00637A89 /* PyishNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PyishNumber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				D47183951958985200B6F360 /* Pyish.swift */,
+				D4BC08C81958AC6800637A89 /* PyishString.swift */,
+				D4BC08CA1958ACBD00637A89 /* PyishNumber.swift */,
 			);
 			path = pyish;
 			sourceTree = "<group>";
@@ -220,7 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BC08C91958AC6800637A89 /* PyishString.swift in Sources */,
 				D47183961958985200B6F360 /* Pyish.swift in Sources */,
+				D4BC08CB1958ACBD00637A89 /* PyishNumber.swift in Sources */,
 				D471837A1958980100B6F360 /* ViewController.swift in Sources */,
 				D47183781958980100B6F360 /* AppDelegate.swift in Sources */,
 			);
