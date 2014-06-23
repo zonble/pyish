@@ -44,6 +44,15 @@ class SampleAppTests: XCTestCase {
 		XCTAssert(str(99) == "99")
 	}
 
+	func testSum() {
+		XCTAssert(sum(1,2,3,4) == 10)
+		XCTAssert(sum("z","o","n","b","l","e") == "zonble")
+	}
+
+	func testZip() {
+		XCTAssert(zip([1, 2, 3], [4, 5, 6], [7, 8, 9, 0]) == [[1, 4, 7], [2, 5, 8], [3, 6, 9]])
+	}
+
 //	func testPerformanceExample() {
 //		self.measureBlock() {
 //		}
