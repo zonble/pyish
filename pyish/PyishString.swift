@@ -1,5 +1,13 @@
 import Foundation
 
+@assignment func *= (inout left :String, right: Int) {
+	var str = ""
+	for i in 0..right {
+		str += left
+	}
+	left = str
+}
+
 @infix func * (left :String, right: Int) -> String {
 	var str = ""
 	for i in 0..right {
@@ -21,6 +29,11 @@ import Foundation
 }
 
 extension String {
+
+	func format(input:CVarArg...) -> String {
+		return NSString(format:self, arguments:getVaList(input))
+	}
+
 	func join(a:AnyObject?...) -> String {
 		var strArray = a.map({"\($0)"})
 		return (strArray as NSArray).componentsJoinedByString(self)

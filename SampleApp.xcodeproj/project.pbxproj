@@ -16,6 +16,8 @@
 		D47183971958985200B6F360 /* Pyish.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47183951958985200B6F360 /* Pyish.swift */; };
 		D4BC08C91958AC6800637A89 /* PyishString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08C81958AC6800637A89 /* PyishString.swift */; };
 		D4BC08CB1958ACBD00637A89 /* PyishNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08CA1958ACBD00637A89 /* PyishNumber.swift */; };
+		D4BC08CC1958AFFE00637A89 /* PyishString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08C81958AC6800637A89 /* PyishString.swift */; };
+		D4BC08CD1958B00100637A89 /* PyishNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC08CA1958ACBD00637A89 /* PyishNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,7 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BC08CC1958AFFE00637A89 /* PyishString.swift in Sources */,
 				D471838B1958980200B6F360 /* SampleAppTests.swift in Sources */,
+				D4BC08CD1958B00100637A89 /* PyishNumber.swift in Sources */,
 				D47183971958985200B6F360 /* Pyish.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

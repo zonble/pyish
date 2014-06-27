@@ -32,6 +32,17 @@ func bool(input:AnyObject?) -> Bool {
     return false
 }
 
+func bytearray(data :NSData) -> UnsafeArray<Byte> {
+	let inputDataPtr = UnsafePointer<Byte>(data.bytes)
+	let inputBytes = UnsafeArray<Byte>(start:inputDataPtr, length:data.length)
+	return inputBytes
+}
+
+func bytearray(string :String, #encoding :NSStringEncoding) -> UnsafeArray<Byte> {
+	var data = string.bridgeToObjectiveC().dataUsingEncoding(encoding)
+	return bytearray(data)
+}
+
 func chr(int :Int) -> String {
     var b = UInt8[]()
     b.append(UInt8(int))
@@ -39,14 +50,14 @@ func chr(int :Int) -> String {
     return NSString(data: data, encoding: NSUTF8StringEncoding)
 }
 
-func cmp<T:Comparable>(x :T, y: T) -> Int {
+func cmp<T:Comparable>(x :T, y: T) -> NSComparisonResult {
 	if x < y {
-		return -1
+		return .OrderedAscending
 	}
 	if x > y {
-		return 1
+		return .OrderedDescending
 	}
-	return 0
+	return .OrderedSame
 }
 
 func dir(object: AnyObject) -> Array<String> {
@@ -65,60 +76,68 @@ func dir(object: AnyObject) -> Array<String> {
 	return []
 }
 
+func dict<T>(a: Array<(String, T)>) -> Dictionary<String, T> {
+	var d = Dictionary<String, T>()
+	for (k, v) in a {
+		d[k] = v
+	}
+	return d
+}
+
 func str<T>(input :T) -> String {
     return "\(input)"
 }
 
 func sum(inputs :Int...) -> Int {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :UInt...) -> UInt {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Int8...) -> Int8 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :UInt8...) -> UInt8 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Int16...) -> Int16 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :UInt16...) -> UInt16 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Int32...) -> Int32 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :UInt32...) -> UInt32 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Int64...) -> Int64 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :UInt64...) -> UInt64 {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Float...) -> Float {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :Double...) -> Double {
-    return reduce(inputs, 0, {$0 + $1})
+    return reduce(inputs, 0, +)
 }
 
 func sum(inputs :String...) -> String {
-    return reduce(inputs, "", {$0 + $1})
+    return reduce(inputs, "", +)
 }
 
 func ord(c :Character) -> Int {

@@ -39,12 +39,12 @@ class SampleAppTests: XCTestCase {
 	}
 
 	func testCmp() {
-		XCTAssert(cmp(1, 2) == -1)
-		XCTAssert(cmp(2, 1) == 1)
-		XCTAssert(cmp(2, 2) == 0)
-		XCTAssert(cmp("z", "b") == 1)
-		XCTAssert(cmp("b", "z") == -1)
-		XCTAssert(cmp("z", "z") == 0)
+		XCTAssert(cmp(1, 2) == .OrderedAscending)
+		XCTAssert(cmp(2, 1) == .OrderedDescending)
+		XCTAssert(cmp(2, 2) == .OrderedSame)
+		XCTAssert(cmp("z", "b") == .OrderedDescending)
+		XCTAssert(cmp("b", "z") == .OrderedAscending)
+		XCTAssert(cmp("z", "z") == .OrderedSame)
 	}
 
 	func testDir() {
@@ -53,10 +53,30 @@ class SampleAppTests: XCTestCase {
 		println(dir([123, 456] as NSArray))
 	}
 
+	func testDict() {
+		let a = [("a", 1), ("b", 2)]
+		let d = dict(a)
+		XCTAssert(d["a"] == 1)
+		XCTAssert(d["b"] == 2)
+	}
+
 	func testStr() {
 		XCTAssert(str(97) == "97")
 		XCTAssert(str(98) == "98")
 		XCTAssert(str(99) == "99")
+	}
+
+	func testStr2() {
+		var str = "="
+		str *= 10
+		XCTAssert(str == "==========")
+		XCTAssert("=" * 10 == "==========")
+		XCTAssert("z" * 10 == "zzzzzzzzzz")
+	}
+
+	func testStr3() {
+		XCTAssert("%d" % [1] == "1")
+		XCTAssert("%d - %d" % [1, 2] == "1 - 2")
 	}
 
 	func testSum() {
