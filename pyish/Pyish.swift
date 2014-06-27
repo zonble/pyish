@@ -84,6 +84,16 @@ func dict<T>(a: Array<(String, T)>) -> Dictionary<String, T> {
 	return d
 }
 
+func enumerate<T>(a :Array<T>, _ start :Int=0) -> Array<(Int, T)> {
+	var rtn = Array<(Int, T)>()
+	var count = start
+	for item in a {
+		rtn += (count, item)
+		count++
+	}
+	return rtn
+}
+
 func str<T>(input :T) -> String {
     return "\(input)"
 }
