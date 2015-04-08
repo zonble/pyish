@@ -1,6 +1,6 @@
 import Foundation
 
-func all(list:Array<AnyObject?>) -> Bool {
+func all(list :[AnyObject?]) -> Bool {
     for i :AnyObject? in list {
         if bool(i) == false {
             return false
@@ -9,7 +9,7 @@ func all(list:Array<AnyObject?>) -> Bool {
     return true
 }
 
-func any(list:Array<AnyObject?>) -> Bool {
+func any(list :[AnyObject?]) -> Bool {
     for i :AnyObject? in list {
         if bool(i) == true {
             return true
@@ -22,32 +22,39 @@ func bool() -> Bool {
 	return false
 }
 
-func bool(input:AnyObject?) -> Bool {
+func bool(input :AnyObject?) -> Bool {
     if let i:AnyObject! = input {
-		if i as NSObject == false {
-			return false
+		if i as? NSObject == true {
+			return true
 		}
-        return Bool(input)
     }
     return false
 }
 
-func bytearray(data :NSData) -> UnsafeArray<Byte> {
-	let inputDataPtr = UnsafePointer<Byte>(data.bytes)
-	let inputBytes = UnsafeArray<Byte>(start:inputDataPtr, length:data.length)
-	return inputBytes
+func bytearray(data :NSData) -> [UInt8] {
+	let bytes = data.bytes
+	let length = data.length
+	var a = [UInt8]()
+	for i in 0..<length {
+		var ptr = UnsafePointer<UInt8>(bytes.advancedBy(i)).memory as UInt8
+		a.append(ptr)
+	}
+	return a
 }
 
-func bytearray(string :String, #encoding :NSStringEncoding) -> UnsafeArray<Byte> {
-	var data = string.bridgeToObjectiveC().dataUsingEncoding(encoding)
-	return bytearray(data)
+func bytearray(string :String, #encoding :NSStringEncoding) -> [UInt8]? {
+	var data = (string as NSString).dataUsingEncoding(encoding)
+	if let data = data {
+		return bytearray(data)
+	}
+	return nil
 }
 
-func chr(int :Int) -> String {
-    var b = UInt8[]()
+func chr(int :Int) -> String? {
+    var b = [UInt8]()
     b.append(UInt8(int))
     var data = NSData(bytes: b, length: 1)
-    return NSString(data: data, encoding: NSUTF8StringEncoding)
+    return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
 }
 
 func cmp<T:Comparable>(x :T, y: T) -> NSComparisonResult {
@@ -60,38 +67,42 @@ func cmp<T:Comparable>(x :T, y: T) -> NSComparisonResult {
 	return .OrderedSame
 }
 
-func dir(object: AnyObject) -> Array<String> {
+func dir(object: AnyObject) -> [String] {
 	if let cls :AnyClass = object_getClass(object) {
 		var count :CUnsignedInt = 0
 		var methods = class_copyMethodList(cls, &count)
-		var methodNames = Array<String>()
+		var methodNames = [String]()
 
-		for var i:CUnsignedInt = 0; i < count; i++ {
+		for var i :CUnsignedInt = 0; i < count; i++ {
 			let methodName = "\(sel_getName(method_getName(methods.memory)))"
 			methodNames.append(methodName)
-			methods = methods.succ()
+			methods = methods.successor()
 		}
 		return methodNames
 	}
 	return []
 }
 
-func dict<T>(a: Array<(String, T)>) -> Dictionary<String, T> {
-	var d = Dictionary<String, T>()
+func dict<T>(a: [(String, T)]) -> [String: T] {
+	var d = [String: T]()
 	for (k, v) in a {
 		d[k] = v
 	}
 	return d
 }
 
-func enumerate<T>(a :Array<T>, _ start :Int=0) -> Array<(Int, T)> {
-	var rtn = Array<(Int, T)>()
+func enumerate<T>(a :[T], _ start :Int=0) -> [(Int, T)] {
+	var rtn = [(Int, T)]()
 	var count = start
 	for item in a {
-		rtn += (count, item)
+		rtn.append((count, item))
 		count++
 	}
 	return rtn
+}
+
+func id<T:Hashable>(input:T) -> Int {
+	return input.hashValue
 }
 
 func str<T>(input :T) -> String {
@@ -150,19 +161,15 @@ func sum(inputs :String...) -> String {
     return reduce(inputs, "", +)
 }
 
-func ord(c :Character) -> Int {
-    return String(c).utf16[0].encode()[0]
-}
-
-func zip(inputs :Array<AnyObject>...) -> Array<Array<AnyObject>> {
-	var output = Array<Array<AnyObject>>()
+func zip(inputs :[AnyObject]...) -> [[AnyObject]] {
+	var output = [[AnyObject]]()
 	var count = inputs[0].count
 	for input in inputs {
 		if input.count < count {
 			count = input.count
 		}
 	}
-	for i in 0..count {
+	for i in 0..<count {
 		var a = Array<AnyObject>()
 		for input in inputs {
 			a.append(input[i])

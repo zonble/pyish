@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D11C8C9B-6967-4D28-B2DB-BCA580FB84C7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SampleApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F5FE094B01299A5D65A55AB5A41929348E48232C</key>
+		<string>github.com:zonble/pyish.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SampleApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F5FE094B01299A5D65A55AB5A41929348E48232C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:zonble/pyish.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F5FE094B01299A5D65A55AB5A41929348E48232C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F5FE094B01299A5D65A55AB5A41929348E48232C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>pyish</string>
+		</dict>
+	</array>
+</dict>
+</plist>

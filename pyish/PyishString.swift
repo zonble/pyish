@@ -1,37 +1,37 @@
 import Foundation
 
-@assignment func *= (inout left :String, right: Int) {
+func *= (inout left :String, right: Int) {
 	var str = ""
-	for i in 0..right {
+	for i in 0..<right {
 		str += left
 	}
 	left = str
 }
 
-@infix func * (left :String, right: Int) -> String {
+func * (left :String, right: Int) -> String {
 	var str = ""
-	for i in 0..right {
+	for i in 0..<right {
 		str += left
 	}
 	return str
 }
 
-@infix func * (left :Character, right: Int) -> String {
+func * (left :Character, right :Int) -> String {
 	var str = ""
-	for i in 0..right {
-		str += left
+	for i in 0..<right {
+		str.append(left)
 	}
 	return str
 }
 
-@infix func % (format:String, args:CVarArg[]) -> String {
-	return NSString(format: format, arguments: getVaList(args))
+func % (format :String, args :[CVarArgType]) -> String? {
+	return NSString(format: format, arguments: getVaList(args)) as? String
 }
 
 extension String {
 
-	func format(input:CVarArg...) -> String {
-		return NSString(format:self, arguments:getVaList(input))
+	func format(input:CVarArgType...) -> String? {
+		return NSString(format:self, arguments:getVaList(input)) as? String
 	}
 
 	func join(a:AnyObject?...) -> String {
@@ -40,7 +40,7 @@ extension String {
 	}
 
 	func zfill(width :Int) -> String {
-		let currentLength = self.bridgeToObjectiveC().length
+		let currentLength = (self as NSString).length
 		if currentLength >= width {
 			return self
 		}
@@ -49,7 +49,7 @@ extension String {
 	}
 
 	func zfill(fill :Character, width :Int) -> String {
-		let currentLength = self.bridgeToObjectiveC().length
+		let currentLength = (self as NSString).length
 		if currentLength >= width {
 			return self
 		}
